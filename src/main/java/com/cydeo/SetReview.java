@@ -14,9 +14,8 @@ public class SetReview {
         set.add(new Student(20,"Tina"));
         set.add(new Student(30, "Diana"));
         set.add(new Student(40, "Dino"));
+
         System.out.println(set);
-
-
         String str= "Java Developer";
         System.out.println(firstRepeatingChar(str));
         // 2 add element

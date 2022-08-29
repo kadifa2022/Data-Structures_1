@@ -38,7 +38,7 @@ public class Student {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode() {//defined hash code
         int result = id;
         result = 31 * result + name.hashCode();
         return result;
