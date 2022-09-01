@@ -1,7 +1,6 @@
 package com.cydeo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ArrayListReview {
     public static void main(String[] args) {
@@ -21,7 +20,52 @@ public class ArrayListReview {
         for (int i = 0; i < students.size(); i++) {
             System.out.println(students.get(i));
         }
+        //2. Iterator
+        //Forward Iteration
+        System.out.println("Printing with Iterator---------------------");
+        Iterator iter = students.listIterator();
+        while (iter.hasNext()){
+            System.out.println(iter.next());
+        }
+        //Backwards Iteration
+        System.out.println("Printing with iterator--------------------" );
+
+        while (((ListIterator<Student>)iter).hasPrevious()){
+            System.out.println(((ListIterator<Student>)iter).previous());
+        }
+
+        //3. for each loop
+        System.out.println("Printing with for each loop------------------");
+        for(Student s:students){
+            System.out.println(s);
+        }
+        //4. Lambda
+        System.out.println("Printing with Lambda ---------------------------");
+        students.forEach(student-> System.out.println(student));
+
+        //sorting elements in List using comparator interface
+        System.out.println("Sorting with Comparator Interface by Id Desc..... ");
+        Collections.sort(students, new sortByIdDesc());
+        students.forEach(student -> System.out.println(student));
+
+        System.out.println("Sorting with Comparator Interface by Name Desc......");
+        Collections.sort(students, new sortByNameDesc());
+        students.forEach(student-> System.out.println(student));
 
 
     }
-}
+    //implementations of Comparator
+    static class sortByIdDesc implements Comparator<Student>{
+
+        @Override
+        public int compare(Student o1, Student o2) {
+            return o2.id-o1.id;
+        }
+    }
+    static class sortByNameDesc implements Comparator<Student>{
+
+        @Override
+        public int compare(Student o1, Student o2) {
+            return o2.name.compareToIgnoreCase(o1.name);
+        }
+    }}
