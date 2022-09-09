@@ -51,6 +51,11 @@ public class ArrayListReview {
         Collections.sort(students, new sortByIdDescendingOrder());
         students.forEach(student -> System.out.println(student));
 
+        System.out.println("Sorting elements id descending order by name");
+        Collections.sort(students, new sortByIdDescendingOrder());
+        students.forEach(student -> System.out.println(student));
+
+
     }
         //implementation of Comparator functional interface
         static class sortByIdDescendingOrder implements Comparator<Student>{
@@ -59,6 +64,14 @@ public class ArrayListReview {
             public int compare(Student o1, Student o2) {
                 return o2.id-o1.id;
 
+        }
+
+        static class sortByNameDescendingOrder implements Comparator<Student>{
+
+            @Override
+            public int compare(Student o1, Student o2) {
+                return o2.name.compareToIgnoreCase(o1.name);
+            }
         }
 
 
