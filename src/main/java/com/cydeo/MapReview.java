@@ -12,15 +12,15 @@ public class MapReview {
         Map<Integer, String > studentsMap = new HashMap<>();
          studentsMap.put(1, "Jack");
          studentsMap.put(2, "Julia");
-
-
+         String st="JJaaavDDevveloper";
+        System.out.println(findFirstNonRepeating(st));
 
 
     }
 
     public static Character findFirstNonRepeating(String str) {
 
-        //create a map: this will cost me space complexity
+        //create a map: this will cost me space complexity O(n)
         Map<Character, Integer> map = new HashMap <>();
         int count;
 
@@ -34,7 +34,7 @@ public class MapReview {
         }
 
 
-        //starts from the beginning and check
+        //starts from the beginning and check if there is char with frequency
         for(Character ch:str.toCharArray()){
             if(map.containsKey(ch)){
 
