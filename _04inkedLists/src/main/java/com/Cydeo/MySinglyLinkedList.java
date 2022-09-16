@@ -1,5 +1,6 @@
 package com.Cydeo;
 
+
 public class MySinglyLinkedList {
     Node head;
     Node tail;
@@ -8,6 +9,74 @@ public class MySinglyLinkedList {
     boolean isEmpty() {
         return head == null;
     }
+
+    void addFirst(int data) {
+        //create a new node object from data
+        Node node = new Node(data);
+        //case1:list empty
+        if (isEmpty()) {
+            head = tail = node;
+        } else {//case 2: list is not empty
+            node.next = head;
+            head = node;
+        }
+        //increase size
+        size++;
+    }
+
+    public int getKthItemFromLast(int k) {
+        //create two pointers
+        Node ptr1 = head;
+        Node ptr2 = head;
+        //move part 2 k-1 times
+        for (int i = 0; i < k - 1; i++) {
+            ptr2 = ptr2.next;
+
+        }
+        //move both pointers until ptr2 hits the last element
+        while (ptr2.next != null) {
+            ptr1 = ptr1.next;
+            ptr2 = ptr2.next;
+        }
+        //ptr1 is on  kth element from last
+        return ptr1.id;
+    }
+
+    public void removeKthItemFromLast(int k) {
+        //create 3 pointers
+        Node ptr1 = head;
+        Node ptr2 = head;
+        Node prev = null;
+        //move ptr2 k-1 times
+        for (int i = 0; i < k - 1; i++) {
+            ptr2 = ptr2.next;
+        }
+        //move both pointers until ptr2 hits the last element
+        while (ptr2.next != null) {
+            prev = ptr1;
+            ptr1 = ptr1.next;
+            ptr2 = ptr2.next;
+        }
+
+        //prt1 is in the kth element from last
+        //do delete operation
+        if (ptr1 == head) {
+            head = ptr1.next;
+            ptr1.next = null;
+            size--;
+        } else if (ptr1 == tail) {
+            tail = prev;
+            prev.next = null;
+            size--;
+        } else {
+            prev.next = ptr1.next;
+            ptr1.next = null;
+            size--;
+
+        }
+
+    }
+
 
     void add(int data) {
         //create a new node object from data
@@ -49,37 +118,31 @@ public class MySinglyLinkedList {
                 //after deletion
                 size--;
             }
-                //move forward on the elements of the list
-                prev = current;
-                current = current.next;
-            }
+            //move forward on the elements of the list
+            prev = current;
+            current = current.next;
         }
-        //task index of
+    }
+    //task index of
 
-        int indexOf ( int id){
-            if (isEmpty()) return -1;
-            int pos = 0;
-            //iterate through the list
-            Node current = head; //set my current with the starting element;
-            while (current != null) {
-                if (current.id == id) return pos;
-                pos++;
-                current = current.next;
+    int indexOf(int id) {
+        if (isEmpty()) return -1;
+        int pos = 0;
+        //iterate through the list
+        Node current = head; //set my current with the starting element;
+        while (current != null) {
+            if (current.id == id) return pos;
+            pos++;
+            current = current.next;
 
-            }
-            return -1;
         }
+        return -1;
+    }
 
 
-
-
-
-
-
-
-    void printNodes(){
-        Node current=head;
-        while (current !=null) {
+    void printNodes() {
+        Node current = head;
+        while (current != null) {
             if (current.next == null) System.out.println(current.id + "=> null");
             else {
                 System.out.println(current.id + "=> ");
@@ -88,6 +151,37 @@ public class MySinglyLinkedList {
             current = current.next;
         }
     }
+
+    public void removeKthItemFromLast2(int k) {
+        //create two pointers
+        Node ptr1 = head;
+        Node ptr2 = head;
+        for (int i = 0; i < k - 1; i++) {
+            ptr2 = ptr2.next;
+            if (ptr2 == null)
+                System.out.println("Less than k elements");
+            else if (ptr2.next == null) {
+                head = ptr1.next;
+                ptr1.next = null;
+                return;
+
+
+            }
+        }
+        while (ptr2.next.next != null) {
+            ptr1 = ptr1.next;
+            ptr2 = ptr2.next;
+        }
+        ptr1.next = ptr1.next.next;
+        ptr1 = ptr1.next;
+        ptr1 = null;
+
+
+    }
+
+
+
+
 
 
 
