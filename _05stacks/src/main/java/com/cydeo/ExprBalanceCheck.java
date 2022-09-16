@@ -2,7 +2,7 @@ package com.cydeo;
 
 public class ExprBalanceCheck {
     public static void main(String[] args) {
-        System.out.println(e);
+        System.out.println(balanceCheck("(A*C) + ({V-M})"));
 
     }
     public static boolean balanceCheck(String expr){
@@ -13,17 +13,30 @@ public class ExprBalanceCheck {
             Character ch=expr.charAt(i);
             //filter non player chars
             if(ch!='('&& ch!='['&& ch!='{' && ch!=')' && ch!=']' && ch!='}')continue;
-            //if it as
+            //if it is a symbol to be processed
+            //if opening symbol push it to the stack
             if (ch=='('|| ch=='[' ||ch=='{'){
                 myStack.push(ch);
-                continue;;
+                continue;
             }
+            //at this point this is a closing symbol
+            //stack shouldn't be empty
             if(myStack.isEmpty()) return false;
+            switch(ch){
+                case ')':
+                    if(myStack.pop()!='(')return false;
+                    break;
+                case']':
+                    if(myStack.pop()!='[')return false;
+                    break;
+                case '}':
+                    if (myStack.pop()!='{') return false;
+                    break;
+            }
 
-
-        }
+        }//end of for
         //return if stack is empty
-
+return myStack.isEmpty();
     }
 
 }
