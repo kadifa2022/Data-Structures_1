@@ -5,18 +5,18 @@ import java.util.ArrayList;
 public class SinglyLinkedListApp {//check this one
 
     public static void main(String[] args) {
-        MySinglyLinkedList myList=new MySinglyLinkedList();
+        MySinglyLinkedList mylist=new MySinglyLinkedList();
 
 
         for (int i = 0; i <10 ; i++) {
-            myList.add(i);
+            mylist.add(i);
         }
-        myList.printNodes();
+        mylist.printNodes();
        // ArrayList<Integer> bList=new ArrayList<>();
-        System.out.println("kth item from last:" +myList.getKthItemFromLast(3));
-        myList.deleteById(1);
-        myList.printNodes();
-        myList.removeKthItemFromLast(1);
-       // System.out.println("index of 3 :" + myList.indexOf(3));
+        System.out.println("kth item from last:" + mylist.getKthItemFromLast(3));
+        mylist.deleteById(1);
+        mylist.printNodes();
+        mylist.removeKthItemFromLast(1);
+        System.out.println("index of 3 :" + mylist.indexOf(2));
    }
 }
