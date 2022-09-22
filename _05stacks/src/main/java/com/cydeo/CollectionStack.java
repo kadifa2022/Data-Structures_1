@@ -2,7 +2,7 @@ package com.cydeo;
 
 import java.util.Deque;
 import java.util.LinkedList;
-
+import java.util.Stack;
 public class CollectionStack {
     public static void main(String[] args) {
         Deque<Integer> cStack= new LinkedList<>();
