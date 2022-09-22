@@ -78,7 +78,7 @@ public class MySinglyLinkedList {
     }
 
 
-    void add(int data) {
+    public void add(int data) {
         //create a new node object from data
         Node node = new Node(data);
         if (isEmpty()) {// if the list is empty
